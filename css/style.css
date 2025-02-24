@@ -292,6 +292,10 @@ body  {
         font-size: 3rem;
         font-weight: 700;
     }
+
+    .card {
+        border-radius: 0px;
+    }
 }
 
 /* Footer */
