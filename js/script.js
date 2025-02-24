@@ -1,9 +1,8 @@
 /*
 Dato un array di oggetti rappresentante un team di un’azienda, creare una pagina dedicata in cui mostrare una card per ciascun componente.
-(trovate l’array del team all’interno della cartella in allegato)
 Bonus
 Rendere l’esercizio responsive, mandando a capo le card
-Aggiungere un form di agginta membri che permetta di visualizzare il nuovo membro sulla pagina (usate una foto qualunque, anche vostra se volete sentirvi parte del team! :sorridere:) 
+Aggiungere un form di aggiunta membri che permetta di visualizzare il nuovo membro sulla pagina
 */
 
 // Variables
@@ -11,6 +10,9 @@ Aggiungere un form di agginta membri che permetta di visualizzare il nuovo membr
 const header = document.querySelector('#header')
 const main = document.querySelector('#main')
 const footer = document.querySelector('#footer')
+const memberForm = document.querySelector('#memberForm')
+const submitButton = document.querySelector('#submitButton')
+const cards = document.querySelector('#cards')
 
 const teamMembers = [
   {
@@ -51,3 +53,48 @@ const teamMembers = [
   }
 ];
 
+memberForm.addEventListener('submit', (e) => {
+  e.preventDefault()
+
+  const name = document.querySelector('#nameText').value
+  const role = document.querySelector('input[name="roleText"]').value
+  const image = document.querySelector('input[name="imageText"]').value
+
+  let member = {
+      name,
+      role,
+      img
+  }
+
+  const markup = generatesCard(member)
+
+  cards.innerHTML += markup
+
+  memberForm.reset()
+})
+
+function generatesCard(memberObj) {
+
+  const {name, role, img} = memberObj
+
+  const markup = `
+  <div class="card col-4">
+      <img src="${img}" alt="" class="card-image-top">
+      <div class="card-body">
+          <h3>${name}</h3>
+          <p>${role}</p>
+      </div>
+  </div>
+  `
+
+  return markup
+}
+
+function getMembersItems(obj, section) {
+
+  for (let i = 0; i < obj.length; i++) {
+      section.innerHTML += generatesCard(obj[i])
+  }
+}
+
+getMembersItems(teamMembers, cards)
