@@ -308,8 +308,12 @@ body  {
         font-size: 0.7rem;
 
         #cardName {
-            font-size: 0.7rem;
             font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        #cardEmail {
+            margin-top: -0.4rem;
         }
     }
 }

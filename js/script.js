@@ -66,9 +66,9 @@ function generatesCard(memberObj) {
     <div class="card mb-4 bg-black text-light display-flex flex-row overflow-hidden justify-between align-start">
         <img src="${img}" alt="" class="card-image-top" width="100px" height="99px">
         <div class="card-body">
-            <h3 class="h6">${name}</h3>
+            <h3 id="cardName" class="h6">${name}</h3>
             <p>${role}</p>
-            <p class="text-info">${email}</p>
+            <p id="cardEmail" class="text-info">${email}</p>
         </div>
     </div>
   </div>
@@ -86,7 +86,7 @@ memberForm.addEventListener('submit', (e) => {
 
   const name = document.querySelector('input[name="nameText"]').value
   const role = document.querySelector('input[name="roleText"]').value
-  const img = document.querySelector('#imageText').value
+  const img = document.querySelector('input[name="imageText"]').value
   const email = document.querySelector('input[name="emailText"]').value
 
   let member = {
