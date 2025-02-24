@@ -296,10 +296,9 @@ body  {
         font-weight: 700;
     }
 
-    #cardCont {
+    .container {
         @media screen and (max-width: 375px) {
-            flex-direction: column;
-            color: red;
+            padding: 0px;
         }
     }
 
