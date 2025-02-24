@@ -98,7 +98,7 @@ memberForm.addEventListener('submit', (e) => {
 
   const markup = generatesCard(member)
 
-  cards.innerHTML += markup
+  cardsRow.innerHTML += markup
 
   memberForm.reset()
 })
