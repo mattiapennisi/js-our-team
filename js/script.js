@@ -4,6 +4,7 @@ const main = document.querySelector('#main')
 const memberForm = document.querySelector('#memberForm')
 const submitButton = document.querySelector('#submitButton')
 const cards = document.querySelector('#cards')
+const cardsRow = document.querySelector('#cardsRow')
 
 // Array with team members objects
 const teamMembers = [
@@ -61,13 +62,15 @@ function generatesCard(memberObj) {
   const {name, role, img, email} = memberObj
 
   const markup = `
-  <div class="card col bg-dark text-light display-flex flex-row">
-      <img src="${img}" alt="" class="card-image-top" width="100px" height="99px">
-      <div class="card-body">
-          <h3 class="h6">${name}</h3>
-          <p>${role}</p>
-          <p class="text-info">${email}</p>
-      </div>
+   <div id="cardCont" class="col-lg-4 col-md-6 col-sm-12">
+    <div class="card mb-4 bg-black text-light display-flex flex-row overflow-hidden justify-between align-start">
+        <img src="${img}" alt="" class="card-image-top" width="100px" height="99px">
+        <div class="card-body">
+            <h3 class="h6">${name}</h3>
+            <p>${role}</p>
+            <p class="text-info">${email}</p>
+        </div>
+    </div>
   </div>
   `
 
@@ -75,7 +78,7 @@ function generatesCard(memberObj) {
 }
 
 // It generates all existing team members cards
-getMembersItems(teamMembers, cards)
+getMembersItems(teamMembers, cardsRow)
 
 // It generates new team members cards on form submitting
 memberForm.addEventListener('submit', (e) => {

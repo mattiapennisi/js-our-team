@@ -296,6 +296,13 @@ body  {
         font-weight: 700;
     }
 
+    #cardCont {
+        @media screen and (max-width: 375px) {
+            flex-direction: column;
+            color: red;
+        }
+    }
+
     .card {
         border-radius: 0px;
         height: 100px;
@@ -303,6 +310,7 @@ body  {
 
         #cardName {
             font-size: 0.7rem;
+            font-weight: 700;
         }
     }
 }
