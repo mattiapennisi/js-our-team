@@ -1,6 +1,6 @@
 :root {
 
-    font-family: 'Fredoka', sans-serif !important;
+    font-family: 'Fredoka', sans-serif;
 
     --teamTitle: #e53170;
     --cardBackground: #000;
@@ -86,6 +86,8 @@
 /* Body */
 
 body  {
+
+    font-family: 'Fredoka', sans-serif;
 
     /* Common */
 
