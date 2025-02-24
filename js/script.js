@@ -1,8 +1,3 @@
-/*
-Rendere l’esercizio responsive, mandando a capo le card
-Aggiungere un form di aggiunta membri che permetta di visualizzare il nuovo membro sulla pagina
-*/
-
 // Variables
 
 const main = document.querySelector('#main')
@@ -10,6 +5,7 @@ const memberForm = document.querySelector('#memberForm')
 const submitButton = document.querySelector('#submitButton')
 const cards = document.querySelector('#cards')
 
+// Array with team members objects
 const teamMembers = [
   {
     name: "Marco Bianchi",
@@ -49,35 +45,26 @@ const teamMembers = [
   }
 ];
 
-memberForm.addEventListener('submit', (e) => {
-  e.preventDefault()
+// Functions declaration
 
-  const name = document.querySelector('input[name="nameText"]').value
-  const role = document.querySelector('input[name="roleText"]').value
-  const image = document.querySelector('input[name="imageText"]').value
+// Function that enters all existing team members in a container from an object
+function getMembersItems(obj, section) {
 
-  let member = {
-      name,
-      role,
-      img
+  for (let i = 0; i < obj.length; i++) {
+      section.innerHTML += generatesCard(obj[i])
   }
+}
 
-  const markup = generatesCard(member)
-
-  cards.innerHTML += markup
-
-  memberForm.reset()
-})
-
+// Function that generates a card from an object
 function generatesCard(memberObj) {
 
   const {name, role, img, email} = memberObj
 
   const markup = `
   <div class="card col-4 bg-dark text-light display-flex flex-row">
-      <img src="${img}" alt="" class="card-image-top" width="100px" height="100px">
+      <img src="${img}" alt="" class="card-image-top" width="100px" height="99px">
       <div class="card-body">
-          <h3>${name}</h3>
+          <h3 class="h6">${name}</h3>
           <p>${role}</p>
           <p class="text-info">${email}</p>
       </div>
@@ -87,11 +74,28 @@ function generatesCard(memberObj) {
   return markup
 }
 
-function getMembersItems(obj, section) {
-
-  for (let i = 0; i < obj.length; i++) {
-      section.innerHTML += generatesCard(obj[i])
-  }
-}
-
+// It generates all existing team members cards
 getMembersItems(teamMembers, cards)
+
+// It generates new team members cards on form submitting
+memberForm.addEventListener('submit', (e) => {
+  e.preventDefault()
+
+  const name = document.querySelector('input[name="nameText"]').value
+  const role = document.querySelector('input[name="roleText"]').value
+  const image = document.querySelector('input[name="imageText"]').value
+  const email = document.querySelector('input[name="emailText"]').value
+
+  let member = {
+      name,
+      role,
+      image,
+      email
+  }
+
+  const markup = generatesCard(member)
+
+  cards.innerHTML += markup
+
+  memberForm.reset()
+})
